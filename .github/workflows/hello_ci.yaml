@@ -26,4 +26,4 @@ jobs:
       run: msbuild hello_world_actions2.sln /p:Configuration=Release
 
     - name: Test
-      run: vstest.console.exe /testcontainer:hello_world_actions2_tests\bin\Release\hello_world_actions2_tests.dll
+      run: vstest.console.exe /Platform:x64 .\hello_world_actions2_tests\bin\Release\hello_world_actions2_tests.dll
