@@ -16,6 +16,14 @@ jobs:
     - name: Restore dependencies
       run: nuget restore hello_world_actions2.sln
 
+    - name: Check MSBuild path 2019
+      run: |
+        dir "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\MSBuild.exe"
+
+    - name: Check MSBuild path 2022
+      run: |
+        dir "C:\Program Files (x86)\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\MSBuild.exe"
+
     - name: Build
       run: |
         & "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\MSBuild.exe" hello_world_actions2.sln /p:Configuration=Release
