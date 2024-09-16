@@ -1,0 +1,29 @@
+name: .NET Framework CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: '4.8'
+
+    - name: Restore dependencies
+      run: nuget restore hello_world_actions2.sln
+
+    - name: Build
+      run: msbuild hello_world_actions2.sln /p:Configuration=Release
+
+    - name: Test
+      run: |
+        "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\MSTest.exe" /testcontainer:hello_world_actions2_tests\bin\Release\hello_world_actions2_tests.dll
