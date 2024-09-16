@@ -15,7 +15,7 @@ namespace hello_world_actions2
 
         public static int Add(int a, int b)
         {
-            return a + b;
+            return a + b + 1;
         }
     }
 }
